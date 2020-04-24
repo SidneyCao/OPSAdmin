@@ -24,13 +24,20 @@
                 Remember me
             </label>
         </div>
+        <!--<p class="text-danger">{{ err_message }}</p>-->
+        <!-- autoescape off 关闭转义 -->
+        {% autoescape off %}
+            {{ err_message }}
+        {% endautoescape %}
         <!-- btn-lg 大小 -->
         <!-- btn-primary 样式 -->
         <!-- btn-block covers the full width of the parent elements -->
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         <!-- mt 上边距 -->
         <!-- text-muted  display the secondary text of any heading in a smaller and lighter variation. -->
-        <p class="mt-5 mb-3 text-muted">© 2017-{% now "Y" %}</p>
+        <p class="mt-5 mb-3 text-muted">© 梦战工具平台 2019-{% now "Y" %}</p>
     </form>
 </body>
+{% endblock %}
+{% block js %}
 {% endblock %}
