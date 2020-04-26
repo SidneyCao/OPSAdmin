@@ -1,10 +1,8 @@
 from django.urls import path, include
-
 from . import views
 
-app_name = 'usersauth'
+app_name = 'opsdash'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('login/', views.user_login, name='user_login'),
 ]
