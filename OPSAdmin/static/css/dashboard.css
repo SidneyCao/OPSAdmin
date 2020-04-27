@@ -84,6 +84,18 @@ body {
     border-color: transparent;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
   }
+
+  .bg-langrisser {
+    background-color: #563D7C !important;
+  }
+  
+  a.bg-langrisser:hover, a.bg-langrisser:focus,
+  button.bg-langrisser:hover,
+  button.bg-langrisser:focus {
+    background-color: #400080 !important;
+  }
+
+
   
   /*
    * Utilities

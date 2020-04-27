@@ -9,11 +9,6 @@ from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 
-@login_required
-def index(request):
-    return render(request, 'usersauth/index.html', {'title': 'first index'})
-
-
 def user_login(request, authentication_form=AuthenticationForm):
     err_message = ''
     if request.method == 'POST':
