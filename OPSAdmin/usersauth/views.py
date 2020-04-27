@@ -29,3 +29,8 @@ def user_login(request, authentication_form=AuthenticationForm):
             return render(request, 'usersauth/login.html',{'err_message': err_message})
     else:
         return render(request, 'usersauth/login.html', {'err_message': err_message})
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('opsdash:index'))

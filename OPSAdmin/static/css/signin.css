@@ -42,3 +42,22 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+/*自定义颜色*/
+.langrisser-background {
+  background-color:#563D7C;
+}
+
+.btn-primary,.btn-primary:hover,
+.btn-primary:focus,.btn-primary.focus,
+.btn-primary:active,.btn-primary.active {
+  color: #ffffff;
+  background-color:#563D7C;
+  border-color:#563D7C;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #400080;
+  border-color:#400080;
+}
