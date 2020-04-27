@@ -4,12 +4,12 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-
+from django.core import cache
 
 # Create your views here.
 
 
-def user_login(request, authentication_form=AuthenticationForm):
+def user_login(request,authentication_form=AuthenticationForm):
     err_message = ''
     if request.method == 'POST':
         #requst.POST.get 获取的是 <input name="username">
@@ -18,7 +18,7 @@ def user_login(request, authentication_form=AuthenticationForm):
         user = authenticate(username=username, password=password)        
         if user:
             login(request, user)
-            return HttpResponseRedirect(reverse('opsdash:index')) 
+            return HttpResponseRedirect(reverse('opsdash:index'))
         else:
             err_message = '<div class="alert alert-danger"><p class="mb-0"><strong>ERROR!</strong></p>username or password not match!</strong></div>'
             return render(request, 'usersauth/login.html',{'err_message': err_message})
@@ -28,4 +28,4 @@ def user_login(request, authentication_form=AuthenticationForm):
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('opsdash:index'))
+    return HttpResponseRedirect(reverse('usersauth:user_login'))

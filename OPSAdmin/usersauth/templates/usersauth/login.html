@@ -3,40 +3,38 @@
 <link rel="stylesheet" href="/static/css/signin.css">
 {% endblock %}
 {% block content %}
-<body class="text-center">
-    <form class="form-signin" method="POST" action="{% url 'usersauth:user_login' %}">
-        {% csrf_token %}
-        <!-- mb 下边距 -->
-        <img class="mb-4" src="/static/img/langrisser.png" width="75">
 
-        <!-- lable for 属性规定 label 与哪个表单元素绑定。-->
-        <!-- sr-only: This class hides an element in all devices except for the Screen Readers. -->
-        <!-- A screen readers is a form of AT for the blinds -->
-        <label for="inputusername" class="sr-only">username</label>
-        <!-- input type 定义输入类型 -->
-        <input type="text" id="inputusername" name="username" class="form-control" placeholder="Username" required autofocus>
-        <label for="inputpassword" class="sr-only">password</label>
-        <input type="password" id="inputpassword" name="password" class="form-control" placeholder="Password" required>
-        <div>
-            <label>
-                <input type="checkbox" value="remember-me">
-                记住我
-            </label>
-        </div>
-        <!--<p class="text-danger">{{ err_message }}</p>-->
-        <!-- autoescape off 关闭转义 -->
-        {% autoescape off %}
-            {{ err_message }}
-        {% endautoescape %}
-        <!-- btn-lg 大小 -->
-        <!-- btn-primary 样式 -->
-        <!-- btn-block covers the full width of the parent elements -->
-        <button class="btn btn-lg btn-primary btn-block langrisser-background langrisser-color" type="submit">登陆</button>
-        <!-- mt 上边距 -->
-        <!-- text-muted  display the secondary text of any heading in a smaller and lighter variation. -->
-        <p class="mt-5 mb-3 text-muted">© 梦战工具平台 2019-{% now "Y" %}</p>
-    </form>
-</body>
+<form class="form-signin" method="POST" action="{% url 'usersauth:user_login' %}">
+    {% csrf_token %}
+    <!-- mb 下边距 -->
+    <img class="mb-4" src="/static/img/langrisser.png" width="75">
+    <!-- lable for 属性规定 label 与哪个表单元素绑定。-->
+    <!-- sr-only: This class hides an element in all devices except for the Screen Readers. -->
+    <!-- A screen readers is a form of AT for the blinds -->
+    <label for="inputusername" class="sr-only">username</label>
+    <!-- input type 定义输入类型 -->
+    <input type="text" id="inputusername" name="username" class="form-control" placeholder="Username" required autofocus>
+    <label for="inputpassword" class="sr-only">password</label>
+    <input type="password" id="inputpassword" name="password" class="form-control" placeholder="Password" required>
+    <div>
+        <label>
+            <input type="checkbox" value="remember-me">
+            记住我
+        </label>
+    </div>
+    <!--<p class="text-danger">{{ err_message }}</p>-->
+    <!-- autoescape off 关闭转义 -->
+    {% autoescape off %}
+        {{ err_message }}
+    {% endautoescape %}
+    <!-- btn-lg 大小 -->
+    <!-- btn-primary 样式 -->
+    <!-- btn-block covers the full width of the parent elements -->
+    <button class="btn btn-lg btn-primary btn-block langrisser-background langrisser-color" type="submit">登陆</button>
+    <!-- mt 上边距 -->
+    <!-- text-muted  display the secondary text of any heading in a smaller and lighter variation. -->
+    <p class="mt-5 mb-3 text-muted">© 梦战工具平台 2019-{% now "Y" %}</p>
+</form>
 {% endblock %}
 {% block js %}
 {% endblock %}
