@@ -56,7 +56,7 @@
 
   
   /* On mouse-over */
-  .sidenav a:hover, .dropdown-btn:hover {
+  .sidenav a:hover, .dropdown-btn:hover .normal-btn:active {
     color: #f1f1f1;
   }
   
