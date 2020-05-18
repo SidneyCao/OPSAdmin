@@ -65,8 +65,7 @@
   }
 
   .active {
-    background-color: #4C4C47;
-    color: white;
+    color: #f1f1f1;
   }
 
   /* Add an active class to the active dropdown button */
