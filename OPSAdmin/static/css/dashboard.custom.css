@@ -60,7 +60,7 @@
     color: #f1f1f1;
   }
   
-  .sidenav a:focus, .dropdown-btn:focus, .normal-btn:active{
+  .sidenav a:focus, .dropdown-btn:focus, .normal-btn:focus{
     outline:0;
   }
 
