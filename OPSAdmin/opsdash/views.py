@@ -6,8 +6,8 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def index(request):
-    return render(request, 'opsdash/dashboard.html',{})
+    return render(request, 'opsdash/dashboard.html',{'nmenu': 'index'})
 
 @login_required
 def upload_notice(request):
-    return render(request, 'opsdash/upload_notice.html',{})
+    return render(request, 'opsdash/upload_notice.html',{'nmenu': 'upload_notice'})
