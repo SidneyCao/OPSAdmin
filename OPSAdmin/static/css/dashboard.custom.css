@@ -60,13 +60,13 @@
     color: #f1f1f1;
   }
   
-  .sidenav a:focus, .dropdown-btn:focus {
+  .sidenav a:focus, .dropdown-btn:focus, .normal-btn:active{
     outline:0;
   }
 
 
   /* Add an active class to the active dropdown button */
-  .sidenav a:active, .dropdown-btn:active,.normal-btn:active {
+  .sidenav a:active, .dropdown-btn:active, .normal-btn:active {
     background-color: #4C4C47;
     color: white;
   }
