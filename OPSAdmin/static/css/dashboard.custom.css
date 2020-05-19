@@ -80,7 +80,7 @@
   
   /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
   .dropdown-container {
-    display: none;
+    display: block;
     background-color: #262626;
     padding-left: 8px;
   }
