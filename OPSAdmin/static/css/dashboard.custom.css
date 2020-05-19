@@ -69,7 +69,7 @@
   }
 
   /* Add an active class to the active dropdown button */
-  .sidenav a:active, .dropdown-btn:active, .normal-btn:active {
+  .dropdown-btn:active, .normal-btn:active {
     background-color: #4C4C47;
     color: white;
   }
