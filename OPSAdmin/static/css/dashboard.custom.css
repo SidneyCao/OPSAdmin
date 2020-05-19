@@ -68,10 +68,6 @@
     color: white;
   }
 
-  .dropdown-container-active .dropdown-container{
-    display: block;
-  }
-
   /* Add an active class to the active dropdown button */
   .sidenav a:active, .dropdown-btn:active, .normal-btn:active {
     background-color: #4C4C47;
@@ -80,7 +76,7 @@
   
   /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
   .dropdown-container {
-    display: block;
+    display: none;
     background-color: #262626;
     padding-left: 8px;
   }
