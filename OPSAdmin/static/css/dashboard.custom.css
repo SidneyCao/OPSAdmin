@@ -71,7 +71,7 @@
   /* Add an active class to the active dropdown button */
   .dropdown-btn:active, .normal-btn:active {
     background-color: #4C4C47;
-    color: white;
+    color: yellow;
   }
   
   /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
