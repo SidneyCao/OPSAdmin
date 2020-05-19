@@ -66,6 +66,7 @@
 
   .active {
     color: white;
+    display: block;
   }
 
   /* Add an active class to the active dropdown button */
