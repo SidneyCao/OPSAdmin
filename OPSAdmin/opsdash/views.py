@@ -10,4 +10,4 @@ def index(request):
 
 @login_required
 def upload_notice(request):
-    return render(request, 'opsdash/upload_notice.html',{'nmenu': 'upload_notice'})
+    return render(request, 'opsdash/upload_notice.html',{'nmenu': 'ops'})
