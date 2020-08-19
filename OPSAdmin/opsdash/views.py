@@ -6,5 +6,5 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def index(request):
-    return render(request, 'opsdash/base.html')
+    return render(request, 'opsdash/operationLog.html')
 
