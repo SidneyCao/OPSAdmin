@@ -4,5 +4,5 @@ from . import views
 app_name = 'systemAdmin'
 
 urlpatterns = [
-    path('change_notice', views.changeNotice, name='changeNotice'),
+    path('upload_patch', views.uploadPatch, name='uploadPatch'),
 ]

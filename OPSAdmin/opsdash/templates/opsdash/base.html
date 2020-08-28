@@ -39,7 +39,7 @@
       </div>
 
       <ul class="list-unstyled components">
-        <li class="active">
+        <li id="opsdash" class="active">
           <a href="{% url 'opsdash:index' %}">操作记录</a>
         </li>
         <li>
@@ -49,15 +49,15 @@
               <a href="#">修改服务器时间</a>
             </li>
             <li>
-              <a href="{% url 'systemAdmin:changeNotice' %}">修改内网公告</a>
+              <a href="#">修改内网公告</a>
             </li>
           </ul>
         </li>
-        <li>
+        <li id="systemAdmin">
           <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">运维工具</a>
           <ul class="collapse list-unstyled" id="pageSubmenu">
-            <li>
-              <a href="#">上传热更</a>
+            <li id="uploadPatch">
+              <a href="{% url 'systemAdmin:uploadPatch' %}">上传热更</a>
             </li>
             <li>
               <a href="#">更新服务器列表</a>
