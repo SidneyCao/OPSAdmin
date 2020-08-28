@@ -101,7 +101,7 @@
 
 </body>
 <script>
-
+  //折叠navbar和content
   $(document).ready(function () {
     $("#sidebar").mCustomScrollbar({
       theme: "minimal"
@@ -113,6 +113,8 @@
       $('a[aria-expanded=true]').attr('aria-expanded', 'false');
     });
   });
+
+  //reload之后保持collapse仍然打开和active
 
 </script>
 </html>
