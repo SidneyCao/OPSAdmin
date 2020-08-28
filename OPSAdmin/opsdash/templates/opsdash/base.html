@@ -42,9 +42,9 @@
         <li id="opsdash" class="active">
           <a href="{% url 'opsdash:index' %}">操作记录</a>
         </li>
-        <li>
-          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">运营工具</a>
-          <ul class="collapse list-unstyled" id="homeSubmenu">
+        <li id="operation">
+          <a href="#operationSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">运营工具</a>
+          <ul class="collapse list-unstyled" id="operationSubmenu">
             <li>
               <a href="#">修改服务器时间</a>
             </li>
@@ -54,10 +54,10 @@
           </ul>
         </li>
         <li id="systemAdmin">
-          <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">运维工具</a>
-          <ul class="collapse list-unstyled" id="pageSubmenu">
+          <a href="#systemAdminSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">运维工具</a>
+          <ul class="collapse list-unstyled" id="systemAdminSubmenu">
             <li id="uploadPatch">
-              <a href="{% url 'systemAdmin:uploadPatch' %}">上传热更</a>
+              <a href="{% url 'systemAdmin:uploadPatch' %}" id="systemAdminSubmenu_UploadPatch">上传热更</a>
             </li>
             <li>
               <a href="#">更新服务器列表</a>
@@ -114,7 +114,19 @@
     });
   });
 
-  //reload之后保持collapse仍然打开和active
+  //reload之后保持collapse仍然打开
+  $(document).ready(function() {
+      $('a').click(function() {
+        sessionStorage.setItem('collapseItem', $(this).attr('id'));
+      });
+
+      var collapseItem = sessionStorage.getItem('collapseItem');
+      if(collapseItem != "undefined"){
+        $("#opsdash").removeClass("active");
+        collapseItemId = "#"+collapseItem.split("_",1);
+        $(collapseItemId).collapse('show');
+      }
+  })
 
 </script>
 </html>
