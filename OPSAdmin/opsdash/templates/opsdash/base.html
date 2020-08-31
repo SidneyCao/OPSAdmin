@@ -56,8 +56,8 @@
         <li>
           <a href="#system-admin" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">运维工具</a>
           <ul class="collapse list-unstyled" id="system-admin">
-            <li id="upload-patch">
-              <a href="{% url 'systemAdmin:uploadPatch' %}">上传热更</a>
+            <li>
+              <a id="upload-patch" href="{% url 'systemAdmin:uploadPatch' %}">上传热更</a>
             </li>
             <li>
               <a href="#">更新服务器列表</a>
@@ -116,12 +116,15 @@
   });
 
   //reload之后保持collapse仍然打开
+  //新增选中高亮
   $(document).ready(function() {
     collapseItemId = window.location.pathname.split("/")[1];
+    selectedItemId = window.location.pathname.split("/")[2];
     if (collapseItemId != ""){
       $("#opsdash").removeClass("active");
       $("#"+collapseItemId).collapse('show');
     }
+    $("#"+selectedItemId).addClass("selected");
   })
 
 </script>
