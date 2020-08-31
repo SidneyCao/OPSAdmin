@@ -43,13 +43,13 @@
           <a href="{% url 'opsdash:index' %}">操作记录</a>
         </li>
         <li id="operation">
-          <a href="#operationSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">运营工具</a>
-          <ul class="collapse list-unstyled" id="operationSubmenu">
+          <a href="#game-operation" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">运营工具</a>
+          <ul class="collapse list-unstyled" id="game-operation">
             <li>
               <a href="#">修改服务器时间</a>
             </li>
             <li>
-              <a href="#">修改内网公告</a>
+              <a id="change-notice" href="{% url 'gameOperation:changeNotice' %}">修改内网公告</a>
             </li>
           </ul>
         </li>

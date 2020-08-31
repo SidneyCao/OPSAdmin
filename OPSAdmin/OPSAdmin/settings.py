@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'usersauth',
     'opsdash',
     'systemAdmin',
+    'gameOperation',
 ]
 
 MIDDLEWARE = [
