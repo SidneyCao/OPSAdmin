@@ -53,11 +53,11 @@
             </li>
           </ul>
         </li>
-        <li id="systemAdmin">
-          <a href="#systemAdminSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">运维工具</a>
-          <ul class="collapse list-unstyled" id="systemAdminSubmenu">
-            <li id="uploadPatch">
-              <a href="{% url 'systemAdmin:uploadPatch' %}" id="systemAdminSubmenu_UploadPatch">上传热更</a>
+        <li>
+          <a href="#system-admin" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">运维工具</a>
+          <ul class="collapse list-unstyled" id="system-admin">
+            <li id="upload-patch">
+              <a href="{% url 'systemAdmin:uploadPatch' %}">上传热更</a>
             </li>
             <li>
               <a href="#">更新服务器列表</a>
@@ -117,16 +117,11 @@
 
   //reload之后保持collapse仍然打开
   $(document).ready(function() {
-      $('a').click(function() {
-        sessionStorage.setItem('collapseItem', $(this).attr('id'));
-      });
-
-      var collapseItem = sessionStorage.getItem('collapseItem');
-      if(collapseItem != "undefined"){
-        $("#opsdash").removeClass("active");
-        collapseItemId = "#"+collapseItem.split("_",1);
-        $(collapseItemId).collapse('show');
-      }
+    collapseItemId = window.location.pathname.split("/")[1];
+    if (collapseItemId != ""){
+      $("#opsdash").removeClass("active");
+      $("#"+collapseItemId).collapse('show');
+    }
   })
 
 </script>
