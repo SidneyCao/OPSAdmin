@@ -13,6 +13,8 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/static/css/opsdash.css">
   <link rel="stylesheet" href="/static/css/jquery.mCustomScrollbar.min.css">
+  {% block css %}
+  {% endblock %}
 
   <!-- Font Awesome JS -->
   <script src="/static/js/solid.js"></script>
@@ -25,7 +27,6 @@
   <script src="/static/js/bootstrap.min.js"></script>
   <!-- jQuery Custom Scroller -->
   <script src="/static/js/jquery.mCustomScrollbar.concat.min.js"></script>
-
 </head>
 
 <body>
@@ -125,7 +126,8 @@
       $("#"+collapseItemId).collapse('show');
     }
     $("#"+selectedItemId).addClass("selected");
-  })
-
+  });
 </script>
+{% block js %}
+{% endblock %}
 </html>

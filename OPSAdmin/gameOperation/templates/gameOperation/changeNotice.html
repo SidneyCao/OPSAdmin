@@ -1,8 +1,96 @@
 {% extends 'opsdash/base.html' %}
-{% block page %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/changeNotice.css">
 {% endblock %}
 
 {% block content %}
-    <h2>修改内网公告</h2>
-    <p>Coming soon...</p>
+  <h2>修改内网公告</h2>
+  <div class="line"></div>
+  <form class="form-group">
+    <div class="input-group mb-3">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="file-upload">
+        <label class="custom-file-label" for="file-upload" aria-describedby="file-upload-addon">File name is specified(e.g. qa_notice.txt).</label>
+      </div> 
+      <div class="input-group-append">
+        <button id="file-upload-remove" class="btn btn-danger" style="display: none;">Remove</button>
+      </div>
+      <div class="input-group-append">
+        <a href="#" id="file-upload-upload" class="btn btn-info" style="display: none;">Upload</a>
+      </div>    
+    </div>
+    <div id="file-upload-progress-div" class="progress" style="display: none;">
+      <div id="file-upload-progress" class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 20%;">上传中
+      </div>
+    </div>
+  </form>
+  <br>
+  <form>
+      <div>
+          <h6>上次修改时间：</h6>
+      </div>
+  </form>    
+{% endblock %}
+{% block js %}
+<script>
+//点击浏览显示文件名，并显示remove和upload
+$(document).ready(function(){
+  $("#file-upload").on('change',function(){
+    var fileName = $(this).val().replace('C:\\fakepath\\', " ");   
+    if (fileName){
+      $(this).next('.custom-file-label').html(fileName);
+      $(this).next('.custom-file-label').css({"color":"black","font-style":"normal"});  
+      $('#file-upload-remove').show();
+      $('#file-upload-upload').show();
+    }
+    else {
+      $(this).next('.custom-file-label').html('File name is specified(e.g. qa_notice.txt).');
+      $(this).next('.custom-file-label').css({"color":"#bac0ba","font-style":"italic"}); 
+      $('#file-upload-remove').hide();
+      $('#file-upload-upload').hide();
+      $('#file-upload-progress-div').hide();
+    }
+  });
+});
+
+//remove功能
+$(document).ready(function(){
+  $('#file-upload-remove').on('click',function(){
+    $('#file-upload').val('');
+    $('#file-upload').trigger("change")
+  });
+});
+
+//ajax upload功能 
+$(document).ready(function(event){
+  $('#file-upload-upload').on('click',function(){
+    $('#file-upload-progress').addClass("progress-bar-animated");
+    $('#file-upload-progress-div').show();
+    var formData = new FormData();
+    var fileInfo = $("#file-upload")[0].files[0];
+    formData.append('file',fileInfo);
+    $('#file-upload-progress').css("width","30%");
+    if(fileInfo==undefined){
+      window.alert('你没有选择任何文件');
+      return false;
+    }
+    else{
+      $('#file-upload-progress').css("width","60%");
+      $.ajax({
+        type: "POST",
+        url: "{% url 'gameOperation:changeNoticeExec' %}",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(res){
+          $('#file-upload-progress').removeClass("progress-bar-animated bg-info progress-bar-striped");
+          $('#file-upload-progress').addClass("bg-success");
+          $('#file-upload-progress').css("width","100%");
+          $('#file-upload-progress').html("上传成功");
+        }
+      })
+    }
+  })
+})
+</script>
 {% endblock %}
