@@ -65,6 +65,13 @@ $(document).ready(function(){
   });
 });
 
+//html自动转义
+function html2Escape(sHtml) {
+  return sHtml.replace(/[<>&"]/g,function(c){
+  return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];
+  });
+}
+
 //ajax upload功能 
 $(document).ready(function(event){
   $('#file-upload-upload').on('click',function(){
