@@ -11,7 +11,7 @@ def changeNotice(request):
     with open(monitorFile, 'r+') as fileRead:
         nowContent = fileRead.read() 
     lastChangeTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getmtime(monitorFile)))
-    return render(request, 'gameOperation/changeNotice.html',context={'lastChangeTime': lastChangeTime
+    return render(request, 'gameOperation/changeNotice.html',context={'lastChangeTime': lastChangeTime,
                                                                       'nowContent': nowContent                
                                                                     })
 
