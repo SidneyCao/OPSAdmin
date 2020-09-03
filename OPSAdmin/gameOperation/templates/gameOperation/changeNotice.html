@@ -53,7 +53,6 @@ $(document).ready(function(){
       $(this).next('.custom-file-label').css({"color":"#bac0ba","font-style":"italic"}); 
       $('#file-upload-remove').hide();
       $('#file-upload-upload').hide();
-      $('#file-upload-progress-div').hide();
     }
   });
 });
@@ -91,8 +90,8 @@ $(document).ready(function(event){
           $('#file-upload-progress').removeClass("progress-bar-animated bg-info progress-bar-striped");
           $('#file-upload-progress').addClass("bg-success");
           $('#file-upload-progress').css("width","100%");
-          $('#file-upload').next('.custom-file-label').html('File name is specified(e.g. qa_notice.txt).');
           $('#file-upload-progress').html(res.fileName+" "+"上传成功");
+          $('#file-upload-remove').trigger("click")
           $('#last-change-time').html(res.lastChangeTime);
         }
       })
