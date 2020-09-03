@@ -9,10 +9,10 @@ from django.views.decorators.csrf import csrf_exempt
 def changeNotice(request):
     monitorFile = '/home/langrisser-list/conf/0204qa_notice.txt'
     with open(monitorFile, 'r+') as fileRead:
-        nowContent = fileRead.read() 
+        currentContent = fileRead.read() 
     lastChangeTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getmtime(monitorFile)))
     return render(request, 'gameOperation/changeNotice.html',context={'lastChangeTime': lastChangeTime,
-                                                                      'nowContent': nowContent                
+                                                                      'currentContent': currentContent                
                                                                     })
 
 @login_required
