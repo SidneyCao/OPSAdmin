@@ -100,7 +100,7 @@ $(document).ready(function(event){
           $('#file-upload-progress').html(res.fileName+" "+"上传成功");
           $('#file-upload-remove').trigger("click");
           $('#last-change-time').html(res.lastChangeTime);
-          $('#current-content').html(html2Escape(htmlres.currentContent));
+          $('#current-content').html(html2Escape(res.currentContent));
         }
       })
     }
