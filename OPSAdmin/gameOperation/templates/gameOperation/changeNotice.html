@@ -9,7 +9,7 @@
   <form class="form-group">
     <div class="input-group mb-3">
       <div class="custom-file">
-        <input type="file" class="custom-file-input" id="file-upload">
+        <input type="file" class="custom-file-input" id="file-upload" accept=".txt">
         <label class="custom-file-label" for="file-upload" aria-describedby="file-upload-addon">File name is specified(e.g. qa_notice.txt).</label>
       </div> 
       <div class="input-group-append">
@@ -27,7 +27,7 @@
   <br>
   <form>
       <div>
-          <h6>上次修改时间：{ lastChangeTime }</h6>
+          <h6>上次修改时间：{{ lastChangeTime }}</h6>
       </div>
   </form>    
 {% endblock %}
