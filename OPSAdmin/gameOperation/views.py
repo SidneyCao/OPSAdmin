@@ -16,6 +16,7 @@ def changeNotice(request):
 def changeNoticeExec(request):
     if request.is_ajax:
         fileObj = request.FILES.get('file')
+        #上传文件
         if fileObj:
             dir = '/home/langrisser-list/conf/'
             if not os.path.isdir(dir):
@@ -24,7 +25,9 @@ def changeNoticeExec(request):
             with open(uploadFile, 'wb') as newFile:
                 for chunk in fileObj.chunks():
                     newFile.write(chunk)
+            #获取新文件时间
+            lastChangeTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getmtime("%s/%s" % (dir, fileObj.name))))
             
-        return JsonResponse({'fileName':'%s' %fileObj.name})
+        return JsonResponse({'fileName':'%s' %fileObj.name,'lastChangeTime':'%s' %lastChangeTime})
     else:
         raise Http403

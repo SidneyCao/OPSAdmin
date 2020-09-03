@@ -25,11 +25,12 @@
     </div>
   </form>
   <br>
-  <form>
-      <div>
-          <h6>上次修改时间：{{ lastChangeTime }}</h6>
-      </div>
-  </form>    
+  <div>
+    <h6>上次修改时间:</h6>
+    <span id="last-change-time">{{ lastChangeTime }}</span>
+  </div>
+
+ 
 {% endblock %}
 {% block js %}
 <script>
@@ -87,6 +88,7 @@ $(document).ready(function(event){
           $('#file-upload-progress').addClass("bg-success");
           $('#file-upload-progress').css("width","100%");
           $('#file-upload-progress').html(res.fileName+" "+"上传成功");
+          $('#last-change-time').html(res.lastChangeTime);
         }
       })
     }
