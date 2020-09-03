@@ -2,3 +2,7 @@
     color: #bac0ba;
     font-style: italic;
 }
+
+#last-change-time::before {
+    content:'上次修改时间：'
+}
