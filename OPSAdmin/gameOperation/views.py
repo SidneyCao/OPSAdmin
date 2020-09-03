@@ -5,9 +5,10 @@ import os, time, datetime
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
+monitorFile = '/home/langrisser-list/conf/qa_notice.txt'
+
 @login_required
 def changeNotice(request):
-    monitorFile = '/home/langrisser-list/conf/qa_notice.txt'
     with open(monitorFile, 'r+') as fileRead:
         currentContent = fileRead.read() 
     lastChangeTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getmtime(monitorFile)))
@@ -30,9 +31,9 @@ def changeNoticeExec(request):
                 for chunk in fileObj.chunks():
                     newFile.write(chunk)
             #获取新文件时间
-            lastChangeTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getmtime("%s/%s" % (dir, fileObj.name))))
+            lastChangeTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getmtime(monitorFile)))
             #获取新文件内容
-            with open('/home/langrisser-list/conf/qa_notice.txt', 'r+') as fileRead:
+            with open(monitorFile, 'r+') as fileRead:
                 currentContent = fileRead.read() 
         return JsonResponse({'fileName':'%s' %fileObj.name, 'lastChangeTime':'%s' %lastChangeTime, 'currentContent':"%s" %currentContent})
     else:
