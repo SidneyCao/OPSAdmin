@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 @login_required
 def changeNotice(request):
-    monitorFile = '/home/langrisser-list/conf/0204qa_notice.txt'
+    monitorFile = '/home/langrisser-list/conf/qa_notice.txt'
     with open(monitorFile, 'r+') as fileRead:
         currentContent = fileRead.read() 
     lastChangeTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getmtime(monitorFile)))
