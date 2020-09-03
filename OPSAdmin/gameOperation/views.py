@@ -38,3 +38,7 @@ def changeNoticeExec(request):
         return JsonResponse({'fileName':'%s' %fileObj.name, 'lastChangeTime':'%s' %lastChangeTime, 'currentContent':"%s" %currentContent})
     else:
         raise Http403
+
+@login_required
+def changeTime(request):
+    return render(request, 'gameOperation/changeTime.html')

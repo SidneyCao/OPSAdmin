@@ -47,7 +47,7 @@
           <a href="#game-operation" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">运营工具</a>
           <ul class="collapse list-unstyled" id="game-operation">
             <li>
-              <a href="#">修改服务器时间</a>
+              <a id="change-time" href="{% url 'gameOperation:changeTime' %}">修改服务器时间</a>
             </li>
             <li>
               <a id="change-notice" href="{% url 'gameOperation:changeNotice' %}">修改内网公告</a>
