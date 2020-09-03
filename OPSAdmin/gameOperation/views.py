@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse
-import os
+import os, time, datetime
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
@@ -22,6 +22,7 @@ def changeNoticeExec(request):
             with open(uploadFile, 'wb') as newFile:
                 for chunk in fileObj.chunks():
                     newFile.write(chunk)
-        return JsonResponse({'status':'ok'})
+            
+        return JsonResponse({'fileName':'%s' %fileObj.name})
     else:
         raise Http403

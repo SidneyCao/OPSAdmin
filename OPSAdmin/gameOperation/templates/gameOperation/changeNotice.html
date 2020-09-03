@@ -19,7 +19,7 @@
         <a href="#" id="file-upload-upload" class="btn btn-info" style="display: none;">Upload</a>
       </div>    
     </div>
-    <div id="file-upload-progress-div" class="progress" style="display: none;">
+    <div id="file-upload-progress-div" class="progress" style="height: 30px;display: none;">
       <div id="file-upload-progress" class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 20%;">上传中
       </div>
     </div>
@@ -27,7 +27,7 @@
   <br>
   <form>
       <div>
-          <h6>上次修改时间：</h6>
+          <h6>上次修改时间：{ lastChangeTime }</h6>
       </div>
   </form>    
 {% endblock %}
@@ -86,7 +86,7 @@ $(document).ready(function(event){
           $('#file-upload-progress').removeClass("progress-bar-animated bg-info progress-bar-striped");
           $('#file-upload-progress').addClass("bg-success");
           $('#file-upload-progress').css("width","100%");
-          $('#file-upload-progress').html("上传成功");
+          $('#file-upload-progress').html(res.fileName+" "+"上传成功");
         }
       })
     }
