@@ -6,3 +6,9 @@
 #last-change-time::before {
     content:'上次修改时间：'
 }
+
+pre {
+    overflow: auto;
+    word-wrap: normal;
+    white-space: pre;
+}

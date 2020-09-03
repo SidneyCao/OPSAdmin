@@ -31,7 +31,7 @@
   <br>
   <div>
       <h6>当前公告内容：</h6>
-      <div class="pre-scrollable">{{ currentContent }}</div>
+      <span><pre>{{ currentContent }}</pre></span>
   </div>
 
  
@@ -91,7 +91,7 @@ $(document).ready(function(event){
           $('#file-upload-progress').addClass("bg-success");
           $('#file-upload-progress').css("width","100%");
           $('#file-upload-progress').html(res.fileName+" "+"上传成功");
-          $('#file-upload-remove').trigger("click")
+          $('#file-upload-remove').trigger("click");
           $('#last-change-time').html(res.lastChangeTime);
         }
       })
