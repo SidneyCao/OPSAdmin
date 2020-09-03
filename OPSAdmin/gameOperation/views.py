@@ -34,6 +34,6 @@ def changeNoticeExec(request):
             #获取新文件内容
             with open(uploadFile, 'r+') as fileRead:
                 currentContent = fileRead.read() 
-        return JsonResponse({'fileName':'%s' %fileObj.name, 'lastChangeTime':'%s' %lastChangeTime, 'currentContent':'%s' %currentContent})
+        return JsonResponse({'fileName':'%s' %fileObj.name, 'lastChangeTime':'%s' %lastChangeTime, 'currentContent':"%s" %currentContent})
     else:
         raise Http403
