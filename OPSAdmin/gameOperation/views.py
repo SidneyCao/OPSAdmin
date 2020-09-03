@@ -32,7 +32,7 @@ def changeNoticeExec(request):
             #获取新文件时间
             lastChangeTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getmtime("%s/%s" % (dir, fileObj.name))))
             #获取新文件内容
-            with open(uploadFile, 'r+') as fileRead:
+            with open('/home/langrisser-list/conf/qa_notice.txt', 'r+') as fileRead:
                 currentContent = fileRead.read() 
         return JsonResponse({'fileName':'%s' %fileObj.name, 'lastChangeTime':'%s' %lastChangeTime, 'currentContent':"%s" %currentContent})
     else:
