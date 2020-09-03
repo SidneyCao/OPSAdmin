@@ -15,7 +15,7 @@ def changeNoticeExec(request):
     if request.is_ajax:
         fileObj = request.FILES.get('file')
         if fileObj:
-            dir = '/Users/simoncao/Desktop'
+            dir = '/home/langrisser-list/conf/'
             if not os.path.isdir(dir):
                 os.mkdir(dir)
             uploadFile = "%s/%s" % (dir, fileObj.name)
