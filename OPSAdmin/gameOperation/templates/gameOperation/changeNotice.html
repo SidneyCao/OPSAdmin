@@ -74,8 +74,7 @@ function html2Escape(sHtml) {
 
 //ajax upload功能 
 $(document).ready(function(event){
-  $('#file-upload-upload').on('click',function(e){
-    e.preventDefault();
+  $('#file-upload-upload').on('click',function(){
     $('#file-upload-progress').addClass("progress-bar-animated");
     $('#file-upload-progress-div').show();
     var formData = new FormData();
