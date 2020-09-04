@@ -85,7 +85,8 @@ $(document).ready(function(event){
       return false;
     }
     else{
-      $('#file-upload-progress').addClass("progress-bar-animated");
+      $('#file-upload-progress').addClass("progress-bar-animated bg-info progress-bar-striped");
+      $('#file-upload-progress').html("上传中");
       $('#file-upload-progress').css("width","50%");
       $('#file-upload-progress-div').show();
       $.ajax({
