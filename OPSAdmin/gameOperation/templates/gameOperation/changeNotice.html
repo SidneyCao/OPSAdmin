@@ -80,13 +80,14 @@ $(document).ready(function(event){
     var formData = new FormData();
     var fileInfo = $("#file-upload")[0].files[0];
     formData.append('file',fileInfo);
-    $('#file-upload-progress').css("width","30%");
     if(fileInfo==undefined){
       window.alert('你没有选择任何文件');
       return false;
     }
     else{
-      $('#file-upload-progress').css("width","60%");
+      $('#file-upload-progress').addClass("progress-bar-animated");
+      $('#file-upload-progress').css("width","50%");
+      $('#file-upload-progress-div').show();
       $.ajax({
         type: "POST",
         url: "{% url 'gameOperation:changeNoticeExec' %}",
