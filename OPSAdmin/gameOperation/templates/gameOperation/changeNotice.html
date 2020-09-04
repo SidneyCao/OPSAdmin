@@ -20,7 +20,7 @@
       </div>    
     </div>
     <div id="file-upload-progress-div" class="progress" style="height: 30px;display: none;">
-      <div id="file-upload-progress" class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 20%;">上传中
+      <div id="file-upload-progress" class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 30%;">上传中
       </div>
     </div>
   <!--</form>-->
@@ -87,7 +87,6 @@ $(document).ready(function(event){
     else{
       $('#file-upload-progress').addClass("progress-bar-animated bg-info progress-bar-striped");
       $('#file-upload-progress').html("上传中");
-      $('#file-upload-progress').css("width","50%");
       $('#file-upload-progress-div').show();
       $.ajax({
         type: "POST",
