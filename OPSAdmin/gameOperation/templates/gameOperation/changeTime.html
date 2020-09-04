@@ -1,15 +1,19 @@
 {% extends 'opsdash/base.html' %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/changeTime.css">
+{% endblock %}
+
 {% block page %}
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">测试服(KR-QA1,KR-QA2,KR-QA3,KR-QA4)</a>
+        <ul id="my-tab" class="nav navbar-nav ml-auto">
+            <li class="nav-item">
+                <a id="qa-tab"  data-toggle="tab" class="nav-link" href="#qa-pane">测试服</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">审核服(KR)</a>
+            <li class="nav-item">
+                <a id="review-tab"  data-toggle="tab" class="nav-link" href="#review-pane">审核服</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">功能测试服(OFT)</a>
+            <li class="nav-item">
+                <a id="oft-tab"  data-toggle="tab" class="nav-link" href="#oft-pane">功能测试服</a>
             </li>
         </ul>
     </div>
@@ -18,4 +22,48 @@
 {% block content %}
     <h2>修改服务器时间</h2>
     <div class="line"></div>
+    <div class="tab-content">
+        <div class="tab-pane" id="qa-pane" role="tabpanel">
+            <h5 id="qa-pane-current-time">{{ QACurrentTime}}</h5>
+            <div class="input-group mb3">
+                <input type="text" class="form-control" placeholder="Please input the TIME you want to change. e.g. 2019-06-28 14:20" >
+                <div class="input-group-append">
+                    <button class="btn btn-info border">Change</button>
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-success border">Restore</button>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="review-pane" role="tabpanel">
+            <h5 id="review-pane-current-time">{{ ReviewCurrentTime }}</h5>
+            <input type="text" class="form-control" placeholder="Please input the TIME you want to change. e.g. 2019-06-28 14:20" >
+            <div class="input-group-append">
+                <button class="btn btn-info border">Change</button>
+            </div>
+            <div class="input-group-append">
+                <button class="btn btn-success border">Restore</button>
+            </div>
+        </div>
+        <div class="tab-pane" id="oft-pane" role="tabpanel">
+            <h5 id="oft-pane-current-time">{{ OFTCurrentTime }}</h5>
+            <input type="text" class="form-control" placeholder="Please input the TIME you want to change. e.g. 2019-06-28 14:20" >
+            <div class="input-group-append">
+                <button class="btn btn-info border">Change</button>
+            </div>
+            <div class="input-group-append">
+                <button class="btn btn-success border">Restore</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+<script>
+    //tab功能
+    $(document).ready(function(){
+        //显示第一个a选择器
+        $('#my-tab a:first').tab('show')
+    });
+</script>
 {% endblock %}

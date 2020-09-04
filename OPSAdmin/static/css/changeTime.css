@@ -1,0 +1,11 @@
+#qa-pane-current-time::before {
+    content: '测试服(KR-QA1,KR-QA2,KR-QA3,KR-QA4)当前时间：';
+}
+
+#review-pane-current-time::before {
+    content: '审核服(KR)当前时间：';
+}
+
+#oft-pane-current-time::before {
+    content: '功能测试服(OFT)当前时间：';
+}
