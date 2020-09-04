@@ -41,6 +41,7 @@
 //点击浏览显示文件名，并显示remove和upload
 $(document).ready(function(){
   $("#file-upload").on('change',function(){
+    $('#file-upload-progress-div').hide();
     var fileName = $(this).val().replace('C:\\fakepath\\', " ");   
     if (fileName){
       $(this).next('.custom-file-label').html(fileName);
