@@ -46,11 +46,11 @@ def changeTime(request):
     reviewCurrentTime=os.popen('/home/caojiawei/shell/get_review_time.sh 2>&1').read()
     oftCurrentTime=os.popen('/home/caojiawei/shell/get_oft_time.sh 2>&1').read()
     with open('/home/caojiawei/shell/qa_change_time.log','r+') as qaRead:
-        qaOperLog = qaRead.read(300)
+        qaOperLog = ("".join(qaRead.readlines()[0:20]))
     with open('/home/caojiawei/shell/review_change_time.log','r+') as reviewRead:
-        reviewOperLog = reviewRead.read(300)
+        reviewOperLog = ("".join(reviewRead.readlines()[0:20]))
     with open('/home/caojiawei/shell/oft_change_time.log','r+') as oftRead:
-        oftOperLog = oftRead.read(300)   
+        oftOperLog = ("".join(oftRead.readlines()[0:20]))  
     return render(request, 'gameOperation/changeTime.html',context={'qaCurrentTime': qaCurrentTime,
                                                                     'reviewCurrentTime': reviewCurrentTime,  
                                                                     'oftCurrentTime': oftCurrentTime,
