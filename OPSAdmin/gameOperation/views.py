@@ -58,3 +58,8 @@ def changeTime(request):
                                                                     'reviewOperLog': reviewOperLog,
                                                                     'oftOperLog': oftOperLog
                                                                     })
+
+@login_required
+def changeTimeExec(request):
+    return JsonResponse()
+    
