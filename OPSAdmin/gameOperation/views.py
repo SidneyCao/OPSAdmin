@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 monitorFile = '/home/langrisser-list/conf/qa_notice.txt'
+IsoTimeFormat='%Y-%m-%d %H:%M:%S'
 
 @login_required
 def changeNotice(request):
@@ -31,7 +32,7 @@ def changeNoticeExec(request):
                 for chunk in fileObj.chunks():
                     newFile.write(chunk)
             #获取新文件时间
-            lastChangeTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getmtime(monitorFile)))
+            lastChangeTime = time.strftime(IsoTimeFormat, time.localtime(os.path.getmtime(monitorFile)))
             #获取新文件内容
             with open(monitorFile, 'r+') as fileRead:
                 currentContent = fileRead.read() 
