@@ -73,7 +73,7 @@ def changeTimeExec(request):
         with open('/home/caojiawei/shell/%s_change_time.log' %execType,'r+') as fRead:
             conRead = fRead.read()
             fRead.seek(0,0)
-            fRead.write(log+'\n'+'\n'+conRead)
+            fRead.write(log+'\n'+'\n'+'\n'+conRead)
         with open('/home/caojiawei/shell/%s_change_time.log' %execType,'r+') as fRead:
             currentLog = ("".join(fRead.readlines()[0:50]))
         currentTime = os.popen('/home/caojiawei/shell/get_%s_time.sh 2>&1' %execType).read()
