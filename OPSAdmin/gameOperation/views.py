@@ -54,7 +54,7 @@ def changeTime(request):
     return render(request, 'gameOperation/changeTime.html',context={'qaCurrentTime': qaCurrentTime,
                                                                     'reviewCurrentTime': reviewCurrentTime,  
                                                                     'oftCurrentTime': oftCurrentTime,
-                                                                    'qaOperLOg': qaOperLog,
+                                                                    'qaOperLog': qaOperLog,
                                                                     'reviewOperLog': reviewOperLog,
                                                                     'oftOperLog': oftOperLog
                                                                     })
