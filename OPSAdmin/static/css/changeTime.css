@@ -10,6 +10,11 @@
     content: '功能测试服(OFT)当前时间：';
 }
 
+input::placeholder {
+    color: #bac0ba;
+    font-style: italic;
+}
+
 .pre-scrollable {
     word-wrap: normal;
     overflow-y: normal;
