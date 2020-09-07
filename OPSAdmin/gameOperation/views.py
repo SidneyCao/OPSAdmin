@@ -49,7 +49,7 @@ def changeTime(request):
         qaOperLog = qaRead.read(300)
     with open('/home/caojiawei/shell/review_change_time.log','r+') as reviewRead:
         reviewOperLog = reviewRead.read(300)
-    with open('/home/caojiawei/shell/review_change_time.log','r+') as oftRead:
+    with open('/home/caojiawei/shell/oft_change_time.log','r+') as oftRead:
         oftOperLog = oftRead.read(300)   
     return render(request, 'gameOperation/changeTime.html',context={'qaCurrentTime': qaCurrentTime,
                                                                     'reviewCurrentTime': reviewCurrentTime,  
