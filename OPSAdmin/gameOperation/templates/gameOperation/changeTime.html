@@ -92,7 +92,7 @@
             if(date){
                 $.ajax({
                     type: "POST",
-                    url: "{% url 'changeTimeExec' %}",
+                    url: "{% url 'gameOperation:changeTimeExec' %}",
                     data: {date: date, execType: execType},
                     dataType: "json",
                     success: function(res) {
