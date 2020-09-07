@@ -42,4 +42,10 @@ def changeNoticeExec(request):
 
 @login_required
 def changeTime(request):
-    return render(request, 'gameOperation/changeTime.html')
+    qaCurrentTime = os.popen('/home/caojiawei/shell/get_qa_time.sh 2>&1').read()
+    reviewCurrentTime=os.popen('/home/caojiawei/shell/get_review_time.sh 2>&1').read()
+    oftCurrentTime=os.popen('/home/caojiawei/shell/get_oft_time.sh 2>&1').read()
+    return render(request, 'gameOperation/changeTime.html',context={'qaCurrentTime': qaCurrentTime,
+                                                                    'reviewCurrentTime': reviewCurrentTime,  
+                                                                    'oftCurrentTime': oftCurrentTime,
+                                                                    })
