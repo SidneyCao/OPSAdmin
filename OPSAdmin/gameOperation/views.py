@@ -60,6 +60,7 @@ def changeTime(request):
                                                                     })
 
 @login_required
+@csrf_exempt
 def changeTimeExec(request):
     if request.is_ajax:
         execType = request.POST.get('execType')
