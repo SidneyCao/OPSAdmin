@@ -66,6 +66,17 @@ def changeTimeExec(request):
         execType = request.POST.get('execType')
         date = request.POST.get('date')
         response = os.popen('/home/caojiawei/shell/change_%s_time.sh %s 2>&1' %(execType, date)).read()
-        print(response)
-    return JsonResponse({"1":"1"})
+        if('invalid' in response or 'Invalid' in response):
+            log=datetime.datetime.now().strftime(IsoTimeFormat)+'\n'+'Error!'+'\n'+response
+        else:
+            log=datetime.datetime.now().strftime(IsoTimeFormat)+'\n'+'Successful!'+'\n'+response
+        with open('/home/caojiawei/shell/%s_change_time.log' %execType,'r+') as fRead:
+            conRead = fRead.read()
+            fRead.seek(0,0)
+            fRead.write(log+'\n'+'\n'+conRead)
+        with open('/home/caojiawei/shell/%s_change_time.log' %execType,'r+') as fRead:
+            currentLog = ("".join(fRead.readlines()[0:50]))
+        currentTime = os.popen('/home/caojiawei/shell/get_%s_time.sh 2>&1' %execType).read()
+        return JsonResponse({'currentTime':currentTime, 'currentLog':currentLog})
+    return Http403
     

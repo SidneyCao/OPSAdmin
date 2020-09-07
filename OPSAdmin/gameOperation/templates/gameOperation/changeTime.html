@@ -97,13 +97,16 @@
                     dataType: "json",
                     success: function(res) {
                         if(execType=='qa'){
-                            console.log(qa)
+                            $('#qa-pane-current-time').html(res.currentTime)
+                            $('#qa-oper-log').html(res.currenLog)
                         }
                         if(execType=='review'){
-                            console.log(review)
+                            $('#review-pane-current-time').html(res.currentTime)
+                            $('#review-oper-log').html(res.currenLog)
                         }
                         if(execType=='oft'){
-                            console.log(oft)
+                            $('#oft-pane-current-time').html(res.currentTime)
+                            $('#oft-oper-log').html(res.currenLog)
                         }
                     }
                 });
