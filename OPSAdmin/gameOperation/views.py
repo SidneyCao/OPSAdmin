@@ -46,11 +46,11 @@ def changeTime(request):
     reviewCurrentTime=os.popen('/home/caojiawei/shell/get_review_time.sh 2>&1').read()
     oftCurrentTime=os.popen('/home/caojiawei/shell/get_oft_time.sh 2>&1').read()
     with open('/home/caojiawei/shell/qa_change_time.log','r+') as qaRead:
-        qaOperLog = ("".join(qaRead.readlines()[0:50]))
+        qaOperLog = ("".join(qaRead.readlines()[0:60]))
     with open('/home/caojiawei/shell/review_change_time.log','r+') as reviewRead:
-        reviewOperLog = ("".join(reviewRead.readlines()[0:50]))
+        reviewOperLog = ("".join(reviewRead.readlines()[0:60]))
     with open('/home/caojiawei/shell/oft_change_time.log','r+') as oftRead:
-        oftOperLog = ("".join(oftRead.readlines()[0:50]))  
+        oftOperLog = ("".join(oftRead.readlines()[0:60]))  
     return render(request, 'gameOperation/changeTime.html',context={'qaCurrentTime': qaCurrentTime,
                                                                     'reviewCurrentTime': reviewCurrentTime,  
                                                                     'oftCurrentTime': oftCurrentTime,
@@ -73,9 +73,9 @@ def changeTimeExec(request):
         with open('/home/caojiawei/shell/%s_change_time.log' %execType,'r+') as fRead:
             conRead = fRead.read()
             fRead.seek(0,0)
-            fRead.write(log+'\n'+'\n'+'\n'+conRead)
+            fRead.write(log+'\n'+'\n'+conRead)
         with open('/home/caojiawei/shell/%s_change_time.log' %execType,'r+') as fRead:
-            currentLog = ("".join(fRead.readlines()[0:50]))
+            currentLog = ("".join(fRead.readlines()[0:60]))
         currentTime = os.popen('/home/caojiawei/shell/get_%s_time.sh 2>&1' %execType).read()
         return JsonResponse({'currentTime':currentTime, 'currentLog':currentLog})
     return Http403
