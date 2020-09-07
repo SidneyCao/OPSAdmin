@@ -87,8 +87,8 @@
 
     //change功能
     $(document).ready(function(){
-        date = $('#'+execType+"-input").val()
         function changeTimeExec(execType){
+            date = $('#'+execType+"-input").val()
             if(execType=='qa' | execType=='review' | execType=='oft'){
                 if(date){
                     alert(execType+" "+date)
