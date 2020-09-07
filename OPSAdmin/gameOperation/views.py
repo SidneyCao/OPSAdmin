@@ -61,5 +61,10 @@ def changeTime(request):
 
 @login_required
 def changeTimeExec(request):
+    if request.is_ajax:
+        execType = request.POST.get('execType')
+        date = request.POST.get('date')
+        response = os.popen('/home/caojiawei/shell/change_%s_time.sh %s 2>&1' %(execType, date)).read()
+        print(response)
     return JsonResponse()
     

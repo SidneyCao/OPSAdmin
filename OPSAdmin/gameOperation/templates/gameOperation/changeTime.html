@@ -87,13 +87,29 @@
 
     //change功能
     function changeTimeExec(execType){
-        date = $('#'+execType+"-input").val()
+        date = $('#'+execType+"-input").val();
         if(execType=='qa' | execType=='review' | execType=='oft'){
             if(date){
-                alert(execType+" "+date)
+                $.ajax({
+                    type: "POST",
+                    url: "{% url 'changeTimeExec' %}",
+                    data: {date: date, execType: execType},
+                    dataType: "json",
+                    success: function(res) {
+                        if(execType=='qa'){
+                            
+                        }
+                        if(execType=='review'){
+
+                        }
+                        if(execType=='oft'){
+
+                        }
+                    }
+                });
             }
             else{
-                alert("请输入时间！")
+                alert("请输入时间！");
             }
         }
     }
