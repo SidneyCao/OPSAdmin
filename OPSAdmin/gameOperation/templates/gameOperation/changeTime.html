@@ -86,18 +86,17 @@
     });
 
     //change功能
-    $(document).ready(function(){
-        function changeTimeExec(execType){
-            date = $('#'+execType+"-input").val()
-            if(execType=='qa' | execType=='review' | execType=='oft'){
-                if(date){
-                    alert(execType+" "+date)
-                }
-                else{
-                    alert("请输入时间！")
-                }
+    function changeTimeExec(execType){
+        date = $('#'+execType+"-input").val()
+        if(execType=='qa' | execType=='review' | execType=='oft'){
+            if(date){
+                alert(execType+" "+date)
+            }
+            else{
+                alert("请输入时间！")
             }
         }
-    })
+    }
+
 </script>
 {% endblock %}
