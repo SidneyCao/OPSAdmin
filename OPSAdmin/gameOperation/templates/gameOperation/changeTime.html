@@ -98,15 +98,15 @@
                     success: function(res) {
                         if(execType=='qa'){
                             $('#qa-pane-current-time').html(res.currentTime)
-                            $('#qa-oper-log').html(res.currenLog)
+                            $('#qa-oper-log').html(res.currentLog)
                         }
                         if(execType=='review'){
                             $('#review-pane-current-time').html(res.currentTime)
-                            $('#review-oper-log').html(res.currenLog)
+                            $('#review-oper-log').html(res.currentLog)
                         }
                         if(execType=='oft'){
                             $('#oft-pane-current-time').html(res.currentTime)
-                            $('#oft-oper-log').html(res.currenLog)
+                            $('#oft-oper-log').html(res.currentLog)
                         }
                     }
                 });
