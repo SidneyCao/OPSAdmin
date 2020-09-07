@@ -34,6 +34,11 @@
                     <button class="btn btn-success border">Restore</button>
                 </div>
             </div>
+            <br>
+            <div>
+                <h6>操作日志：</h6>
+                <div id="qa-oper-log" class="pre-scrollable">{{ qaOperLog }}</div>
+            </div>
         </div>
         <div class="tab-pane" id="review-pane" role="tabpanel">
             <h5 id="review-pane-current-time">{{ reviewCurrentTime }}</h5>
@@ -45,6 +50,11 @@
                 <div class="input-group-append">
                     <button class="btn btn-success border">Restore</button>
                 </div>
+            </div>
+            <br>
+            <div>
+                <h6>操作日志：</h6>
+                <div id="review-oper-log" class="pre-scrollable">{{ reviewOperLog }}</div>
             </div>
         </div>
         <div class="tab-pane" id="oft-pane" role="tabpanel">
@@ -61,7 +71,7 @@
             <br>
             <div>
                 <h6>操作日志：</h6>
-                <div id="oft-oper-log" class="pre-scrollable">123{{ oftOperLog }}</div>
+                <div id="oft-oper-log" class="pre-scrollable">{{ oftOperLog }}</div>
             </div>
         </div>
     </div>
