@@ -67,5 +67,5 @@ def changeTimeExec(request):
         date = request.POST.get('date')
         response = os.popen('/home/caojiawei/shell/change_%s_time.sh %s 2>&1' %(execType, date)).read()
         print(response)
-    return 403
+    return JsonResponse({"1":"1"})
     
