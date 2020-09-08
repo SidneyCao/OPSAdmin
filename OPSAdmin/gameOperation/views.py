@@ -88,9 +88,14 @@ def changeTimeExecStop(request):
     if request.is_ajax:
         execType = request.POST.get('execType')
         process = request.POST.get('process')
-        print(execType)
-        print(process)
-        return JsonResponse({"1":"1"})
+        if(process == 'stop'):
+            os.popen('/home/langrisser-shell-scripts/Server/%s/ts_stopserver.sh' %execType)
+            time.sleep(180)
+            res = os.popen('/home/langrisser-shell-scripts/Server/%s/check_process.sh' %execType)
+            if(res == '%s Process Stop Success' %execType):
+                return JsonResponse({"process":"stop", "status":"success"})
+            else:
+                return JsonResponse({"process":"stop", "status":"fail"})
     else:
         raise Http403
 

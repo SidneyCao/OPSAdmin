@@ -122,43 +122,50 @@
                 data: {execType: execType, process: 'stop'},
                 dataType: "json",
                 success: function(res){
-                    $('#'+execType+'-restore-progress').css('width','25%')
-                    $('#'+execType+'-restore-progress').html('已停服')
-                    //删除日志
-                    $.ajax({
-                        type: "POST",
-                        url: "{% url 'gameOperation:changeTimeExecDelete' %}",
-                        data: {execType: execType, process: 'delete'},
-                        dataType: "json",
-                        success: function(res){
-                            $('#'+execType+'-restore-progress').css('width','50%')
-                            $('#'+execType+'-restore-progress').html('已删除日志')
-                            //恢复时间
-                            $.ajax({
-                                type: "POST",
-                                url: "{% url 'gameOperation:changeTimeExecRestore' %}",
-                                data: {execType: execType, process: 'restore'},
-                                dataType: "json",
-                                success: function(res){
-                                    $('#'+execType+'-restore-progress').css('width','75%')
-                                    $('#'+execType+'-restore-progress').html('已恢复时间')
-                                    //启动服务器
-                                    $.ajax({
-                                        type: "POST",
-                                        url: "{% url 'gameOperation:changeTimeExecStart' %}",
-                                        data: {execType: execType, process: 'start'},
-                                        dataType: "json",
-                                        success: function(res){
-                                            $('#'+execType+'-restore-progress').css('width','100%')
-                                            $('#'+execType+'-restore-progress').html('已启动服务器')
-                                            $('#'+execType+'-restore-progress').removeClass("progress-bar-animated bg-info progress-bar-striped");
-                                            $('#'+execType+'-restore-progress').addClass("bg-success");
-                                        }
-                                    })
-                                }
-                            })
-                        }
-                    })
+                    if(res.status == 'success'){
+                        $('#'+execType+'-restore-progress').css('width','25%')
+                        $('#'+execType+'-restore-progress').html('已停服')
+                        //删除日志
+                        $.ajax({
+                            type: "POST",
+                            url: "{% url 'gameOperation:changeTimeExecDelete' %}",
+                            data: {execType: execType, process: 'delete'},
+                            dataType: "json",
+                            success: function(res){
+                                $('#'+execType+'-restore-progress').css('width','50%')
+                                $('#'+execType+'-restore-progress').html('已删除日志')
+                                //恢复时间
+                                $.ajax({
+                                    type: "POST",
+                                    url: "{% url 'gameOperation:changeTimeExecRestore' %}",
+                                    data: {execType: execType, process: 'restore'},
+                                    dataType: "json",
+                                    success: function(res){
+                                        $('#'+execType+'-restore-progress').css('width','75%')
+                                        $('#'+execType+'-restore-progress').html('已恢复时间')
+                                        //启动服务器
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "{% url 'gameOperation:changeTimeExecStart' %}",
+                                            data: {execType: execType, process: 'start'},
+                                            dataType: "json",
+                                            success: function(res){
+                                                $('#'+execType+'-restore-progress').css('width','100%')
+                                                $('#'+execType+'-restore-progress').html('已启动服务器')
+                                                $('#'+execType+'-restore-progress').removeClass("progress-bar-animated bg-info progress-bar-striped");
+                                                $('#'+execType+'-restore-progress').addClass("bg-success");
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        })
+                    }
+                    else{
+                        $('#'+execType+'-restore-progress').removeClass("progress-bar-animated bg-info progress-bar-striped");
+                        $('#'+execType+'-restore-progress').addClass("bg-danger");
+                        $('#'+execType+'-restore-progress').html('停服失败，请联系管理员！')
+                    }
                 }
             })
         }
