@@ -90,7 +90,7 @@ def changeTimeExecStop(request):
         process = request.POST.get('process')
         if(process == 'stop'):
             os.popen('/home/langrisser-shell-scripts/Server/%s/ts_stopserver.sh' %execType)
-            time.sleep(60)
+            time.sleep(10)
             res = os.popen('/home/langrisser-shell-scripts/Server/%s/check_process.sh' %execType).read()
             print(res)
             if(res == '%s Process Stop Success' %execType):
