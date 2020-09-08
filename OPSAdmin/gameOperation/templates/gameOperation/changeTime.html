@@ -115,7 +115,8 @@
         if(execType=='qa' | execType=='review' | execType=='oft'){
             $.ajax({
                 type: "POST",
-                date: execType,
+                date: {execType: execType},
+                dataType: "json",
                 url: "{% url 'gameOperation:changeTimeExecRestore' %}",
                 success: function(res){
                     $('#'+execType+'-restore-progress').css('width','100%')

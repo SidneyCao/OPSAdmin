@@ -86,7 +86,8 @@ def changeTimeExec(request):
 @csrf_exempt
 def changeTimeExecRestore(request):
     if request.is_ajax:
-        execType = request.POST
+        execType = request.POST.get('execType')
         print(execType)
+        return JsonResponse({"1":"1"})
     else:
         raise Http403
