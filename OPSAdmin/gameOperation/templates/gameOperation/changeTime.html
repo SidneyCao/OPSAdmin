@@ -65,9 +65,10 @@
                     <button onclick="changeTimeExec('oft')" class="btn btn-info border">Change</button>
                 </div>
                 <div class="input-group-append">
-                    <button class="btn btn-success border">Restore</button>
+                    <button onclick="changeTimeExecRestore('oft')" class="btn btn-success border">Restore</button>
                 </div>
             </div>
+            <div id="oft-restore-progress" class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 10%;height: 30px;display: none;">开始恢复时间</div>
             <br>
             <div>
                 <h6>操作日志：</h6>
@@ -96,24 +97,32 @@
                     data: {date: date, execType: execType},
                     dataType: "json",
                     success: function(res) {
-                        if(execType=='qa'){
-                            $('#qa-pane-current-time').html(res.currentTime)
-                            $('#qa-oper-log').html(res.currentLog)
-                        }
-                        if(execType=='review'){
-                            $('#review-pane-current-time').html(res.currentTime)
-                            $('#review-oper-log').html(res.currentLog)
-                        }
-                        if(execType=='oft'){
-                            $('#oft-pane-current-time').html(res.currentTime)
-                            $('#oft-oper-log').html(res.currentLog)
-                        }
+                        $('#'+execType+'-pane-current-time').html(res.currentTime)
+                        $('#'+execType+'-oper-log').html(res.currentLog)
                     }
-                });
+                })
             }
             else{
                 alert("请输入时间！");
             }
+        }
+    };
+
+    //restore功能
+    function changeTimeExecRestore(execType){
+        $('#'+execType+'-restore-progress').show()
+        if(execType=='qa' | execType=='review' | execType=='oft'){
+            $.ajax({
+                type: "POST",
+                date: execType,
+                url: "{% url 'gameOperation:changeTimeExecRestore' %}",
+                success: function(res){
+                    $('#'+execType+'-restore-progress').css('width','100%')
+                    $('#'+execType+'-restore-progress').html('完成')
+                    $('#'+execType+'-restore-progress').removeClass("progress-bar-animated bg-info progress-bar-striped");
+                    $('#'+execType+'-restore-progress').addClass("bg-success");
+                }
+            })
         }
     }
 

@@ -78,5 +78,15 @@ def changeTimeExec(request):
             currentLog = ("".join(fRead.readlines()[0:60]))
         currentTime = os.popen('/home/caojiawei/shell/get_%s_time.sh 2>&1' %execType).read()
         return JsonResponse({'currentTime':currentTime, 'currentLog':currentLog})
-    return Http403
-    
+    else:
+        raise Http403
+
+
+@login_required
+@csrf_exempt
+def changeTimeExecRestore(request):
+    if request.is_ajax:
+        execType = request.POST.get()
+        print(execType)
+    else:
+        raise Http403

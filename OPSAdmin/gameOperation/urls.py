@@ -8,4 +8,5 @@ urlpatterns = [
     path('change-notice/exec', views.changeNoticeExec, name='changeNoticeExec'),
     path('change-time', views.changeTime, name='changeTime'),
     path('change-time/exec', views.changeTimeExec, name='changeTimeExec'),
+    path('change-time/exec/restore', views.changeTimeExecRestore, name='changeTimeExecRestore'),
 ]
