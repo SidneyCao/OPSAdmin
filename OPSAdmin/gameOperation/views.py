@@ -92,8 +92,7 @@ def changeTimeExecStop(request):
             os.popen('/home/langrisser-shell-scripts/Server/%s/ts_stopserver.sh' %execType)
             time.sleep(10)
             res = os.popen('/home/langrisser-shell-scripts/Server/%s/check_process.sh' %execType).read()
-            print(res)
-            if(res == 'oft Process Stop Success'):
+            if(res == '%s \033[32mProcess Start Success \033[0m' %execType):
                 return JsonResponse({"process":"stop", "status":"success"})
             else:
                 return JsonResponse({"process":"stop", "status":"fail"})
