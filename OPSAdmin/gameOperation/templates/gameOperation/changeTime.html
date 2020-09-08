@@ -111,7 +111,9 @@
 
     //restore功能
     function changeTimeExecRestore(execType){
+        //$('#'+execType+'-restore-progress').removeClass();
         $('#'+execType+'-restore-progress').html('开始停服')
+        //$('#'+execType+'-restore-progress').css("width","10%");
         $('#'+execType+'-restore-progress').addClass("progress-bar-animated bg-info progress-bar-striped");
         $('#'+execType+'-restore-progress').show()
         if(execType=='qa' | execType=='review' | execType=='oft'){
