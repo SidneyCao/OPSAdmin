@@ -124,7 +124,6 @@
                 data: {execType: execType, process: 'stop'},
                 dataType: "json",
                 success: function(res){
-                    alert(res.status)
                     if(res.status == 'success'){
                         $('#'+execType+'-restore-progress').css('width','25%')
                         $('#'+execType+'-restore-progress').html('已停服')
