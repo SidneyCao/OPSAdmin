@@ -68,8 +68,9 @@
                     <button onclick="changeTimeExecRestore('oft')" class="btn btn-success border">Restore</button>
                 </div>
             </div>
-            <br>
-            <div id="oft-restore-progress" class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 10%;height: 30px;display: none;">开始恢复时间</div>
+            <div id="file-upload-progress-div" class="progress" style="height: 30px;display: none;">
+                <div id="oft-restore-progress" class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 10%">开始恢复时间</div>
+            </div>
             <br>
             <div>
                 <h6>操作日志：</h6>
@@ -111,13 +112,13 @@
 
     //restore功能
     function changeTimeExecRestore(execType){
-        $('#'+execType+'-restore-progress').show()
+        $('#'+execType+'-restore-progress-div').show()
         if(execType=='qa' | execType=='review' | execType=='oft'){
             $.ajax({
                 type: "POST",
+                url: "{% url 'gameOperation:changeTimeExecRestore' %}",
                 date: {execType: execType},
                 dataType: "json",
-                url: "{% url 'gameOperation:changeTimeExecRestore' %}",
                 success: function(res){
                     $('#'+execType+'-restore-progress').css('width','100%')
                     $('#'+execType+'-restore-progress').html('完成')
