@@ -84,10 +84,48 @@ def changeTimeExec(request):
 
 @login_required
 @csrf_exempt
+def changeTimeExecStop(request):
+    if request.is_ajax:
+        execType = request.POST.get('execType')
+        process = request.POST.get('process')
+        print(execType)
+        print(process)
+        return JsonResponse({"1":"1"})
+    else:
+        raise Http403
+
+@login_required
+@csrf_exempt
+def changeTimeExecDelete(request):
+    if request.is_ajax:
+        execType = request.POST.get('execType')
+        process = request.POST.get('process')
+        print(execType)
+        print(process)
+        return JsonResponse({"1":"1"})
+    else:
+        raise Http403
+
+@login_required
+@csrf_exempt
 def changeTimeExecRestore(request):
     if request.is_ajax:
         execType = request.POST.get('execType')
+        process = request.POST.get('process')
         print(execType)
+        print(process)
+        return JsonResponse({"1":"1"})
+    else:
+        raise Http403
+
+@login_required
+@csrf_exempt
+def changeTimeExecStart(request):
+    if request.is_ajax:
+        execType = request.POST.get('execType')
+        process = request.POST.get('process')
+        print(execType)
+        print(process)
         return JsonResponse({"1":"1"})
     else:
         raise Http403
