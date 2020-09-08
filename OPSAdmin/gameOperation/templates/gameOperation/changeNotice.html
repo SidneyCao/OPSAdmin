@@ -20,7 +20,7 @@
       </div>    
     </div>
     <div id="file-upload-progress-div" class="progress" style="height: 30px;display: none;">
-      <div id="file-upload-progress" class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 20%;">上传中
+      <div id="file-upload-progress" class="progress-bar progress-bar-animated bg-info progress-bar-striped" role="progressbar" style="width: 20%;">上传中
       </div>
     </div>
   <!--</form>-->
@@ -75,7 +75,7 @@ function html2Escape(sHtml) {
 //ajax upload功能 
 $(document).ready(function(event){
   $('#file-upload-upload').on('click',function(){
-    $('#file-upload-progress').addClass("progress-bar-animated");
+    $('#file-upload-progress').addClass("progress-bar-animated bg-info progress-bar-striped");
     $('#file-upload-progress-div').show();
     var formData = new FormData();
     var fileInfo = $("#file-upload")[0].files[0];
@@ -85,10 +85,8 @@ $(document).ready(function(event){
       return false;
     }
     else{
-      $('#file-upload-progress').addClass("progress-bar-animated bg-info progress-bar-striped");
       $('#file-upload-progress').html("上传中");
       $('#file-upload-progress').css("width","30%");
-      $('#file-upload-progress-div').show();
       $.ajax({
         type: "POST",
         url: "{% url 'gameOperation:changeNoticeExec' %}",

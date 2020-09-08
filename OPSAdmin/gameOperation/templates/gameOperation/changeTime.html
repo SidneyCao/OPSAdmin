@@ -69,7 +69,7 @@
                 </div>
             </div>
             <br>
-            <div id="oft-restore-progress" class="progress progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 10%;height: 30px;display: none;">开始停服</div>
+            <div id="oft-restore-progress" class="progress progress-bar progress-bar-animated bg-info progress-bar-striped" role="progressbar" style="width: 10%;height: 30px;display: none;">开始停服</div>
             <br>
             <div>
                 <h6>操作日志：</h6>
@@ -111,7 +111,7 @@
 
     //restore功能
     function changeTimeExecRestore(execType){
-        $('#'+execType+'-restore-progress').addClass("progress-bar-animated");
+        $('#'+execType+'-restore-progress').addClass("progress-bar-animated bg-info progress-bar-striped");
         $('#'+execType+'-restore-progress').show()
         if(execType=='qa' | execType=='review' | execType=='oft'){
             //停服
