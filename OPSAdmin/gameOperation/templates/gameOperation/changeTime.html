@@ -164,6 +164,7 @@
                     else{
                         $('#'+execType+'-restore-progress').removeClass("progress-bar-animated bg-info progress-bar-striped");
                         $('#'+execType+'-restore-progress').addClass("bg-danger");
+                        $('#'+execType+'-restore-progress').css("width","100%");
                         $('#'+execType+'-restore-progress').html('停服失败，请联系管理员！')
                     }
                 }
