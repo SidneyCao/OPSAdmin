@@ -89,8 +89,8 @@ def changeTimeExecStop(request):
         execType = request.POST.get('execType')
         process = request.POST.get('process')
         if(process == 'stop'):
-            os.popen('/home/langrisser-shell-scripts/Server/%s/ts_stopserver.sh' %execType)
-            time.sleep(150)
+            os.popen('/home/langrisser-shell-scripts/Server/%s/ts_stopserver.sh 2>&1 > /dev/null' %execType)
+            time.sleep(120)
             res = os.popen('/home/langrisser-shell-scripts/Server/%s/check_process.sh' %execType).read()
             if('Process Stop Success' in res):
                 return JsonResponse({"process":"stop", "status":"success"})
@@ -105,9 +105,9 @@ def changeTimeExecDelete(request):
     if request.is_ajax:
         execType = request.POST.get('execType')
         process = request.POST.get('process')
-        print(execType)
-        print(process)
-        return JsonResponse({"1":"1"})
+        if(process == 'delete'):
+            os.popen('/home/langrisser-shell-scripts/Server/%s/delete_logs.sh 2>&1 > /dev/null' %execType)
+            return JsonResponse({"process":"delete", "status":"success"})
     else:
         raise Http403
 
