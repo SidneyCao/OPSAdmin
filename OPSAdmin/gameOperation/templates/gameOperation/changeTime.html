@@ -143,6 +143,8 @@
                                     data: {execType: execType, process: 'restore'},
                                     dataType: "json",
                                     success: function(res){
+                                        $('#'+execType+'-pane-current-time').html(res.currentTime)
+                                        $('#'+execType+'-oper-log').html(res.currentLog)
                                         $('#'+execType+'-restore-progress').css('width','75%')
                                         $('#'+execType+'-restore-progress').html('已恢复时间')
                                         //启动服务器

@@ -117,9 +117,21 @@ def changeTimeExecRestore(request):
     if request.is_ajax:
         execType = request.POST.get('execType')
         process = request.POST.get('process')
-        print(execType)
-        print(process)
-        return JsonResponse({"1":"1"})
+        if(process == 'restore'):
+            date = os.popen("date '+%Y-%m-%d %H:%M:%S'").read()
+            response = os.popen('/home/caojiawei/shell/change_%s_time.sh %s 2>&1' %(execType, date)).read()
+            if('invalid' in response or 'Invalid' in response):
+                log=datetime.datetime.now().strftime(IsoTimeFormat)+' Error!'+'\n'+response
+            else:
+                log=datetime.datetime.now().strftime(IsoTimeFormat)+' Successful!'+'\n'+'服务器时间成功修改为 '+response
+            with open('/home/caojiawei/shell/%s_change_time.log' %execType,'r+') as fRead:
+                conRead = fRead.read()
+                fRead.seek(0,0)
+                fRead.write(log+'\n'+'\n'+conRead)
+            with open('/home/caojiawei/shell/%s_change_time.log' %execType,'r+') as fRead:
+                currentLog = ("".join(fRead.readlines()[0:60]))
+            currentTime = os.popen('/home/caojiawei/shell/get_%s_time.sh 2>&1' %execType).read()
+            return JsonResponse({'currentTime':currentTime, 'currentLog':currentLog})
     else:
         raise Http403
 
