@@ -106,7 +106,7 @@ def changeTimeExecDelete(request):
         execType = request.POST.get('execType')
         process = request.POST.get('process')
         if(process == 'delete'):
-            os.popen('/home/langrisser-shell-scripts/Server/%s/delete_logs.sh 2>&1 > /home/langrisser-shell-scripts/Server/oft/delete_logs.log' %execType)
+            os.popen('/home/langrisser-shell-scripts/Server/%s/delete_logs.sh 2>&1 >> /home/langrisser-shell-scripts/Server/oft/delete_logs.log' %execType)
             return JsonResponse({"process":"delete", "status":"success"})
     else:
         raise Http403
