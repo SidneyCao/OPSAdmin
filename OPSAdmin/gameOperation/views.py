@@ -67,7 +67,7 @@ def changeTimeExec(request):
         date = request.POST.get('date')
         response = os.popen('/home/caojiawei/shell/change_%s_time.sh %s 2>&1' %(execType, date)).read()
         if('invalid' in response or 'Invalid' in response):
-            log=datetime.datetime.now().strftime(IsoTimeFormat)+' Error!'+'\n'+response
+            log=datetime.datetime.now().strftime(IsoTimeFormat)+' Error!'+'\n'+'服务器时间修改失败 '+response
         else:
             log=datetime.datetime.now().strftime(IsoTimeFormat)+' Successful!'+'\n'+'服务器时间成功修改为 '+response
         with open('/home/caojiawei/shell/%s_change_time.log' %execType,'r+') as fRead:
@@ -90,7 +90,7 @@ def changeTimeExecStop(request):
         process = request.POST.get('process')
         if(process == 'stop'):
             os.popen('/home/langrisser-shell-scripts/Server/%s/ts_stopserver.sh 2>&1 > /dev/null' %execType)
-            time.sleep(10)
+            time.sleep(120)
             res = os.popen('/home/langrisser-shell-scripts/Server/%s/check_process.sh' %execType).read()
             if('Process Stop Success' in res):
                 return JsonResponse({"process":"stop", "status":"success"})
@@ -121,9 +121,9 @@ def changeTimeExecRestore(request):
             date = os.popen("date '+%Y-%m-%d %H:%M:%S'").read()
             response = os.popen('/home/caojiawei/shell/change_%s_time.sh %s 2>&1' %(execType, date)).read()
             if('invalid' in response or 'Invalid' in response):
-                log=datetime.datetime.now().strftime(IsoTimeFormat)+' Error!'+'\n'+response
+                log=datetime.datetime.now().strftime(IsoTimeFormat)+' Error!'+'\n'+'服务器时间恢复失败 '+response
             else:
-                log=datetime.datetime.now().strftime(IsoTimeFormat)+' Successful!'+'\n'+'服务器时间成功修改为 '+response
+                log=datetime.datetime.now().strftime(IsoTimeFormat)+' Successful!'+'\n'+'服务器时间成功恢复为 '+response
             with open('/home/caojiawei/shell/%s_change_time.log' %execType,'r+') as fRead:
                 conRead = fRead.read()
                 fRead.seek(0,0)

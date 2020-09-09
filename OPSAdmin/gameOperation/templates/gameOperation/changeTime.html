@@ -69,7 +69,7 @@
                 </div>
             </div>
             <br>
-            <div id="oft-restore-progress" class="progress progress-bar progress-bar-animated bg-info progress-bar-striped" role="progressbar" style="width: 10%;height: 30px;display: none;">开始停服</div>
+            <div id="oft-restore-progress" class="progress progress-bar progress-bar-animated bg-info progress-bar-striped" role="progressbar" style="width: 100%;height: 30px;display: none;">开始停服，预计需要两分钟，期间请勿刷新</div>
             <br>
             <div>
                 <h6>操作日志：</h6>
@@ -112,8 +112,8 @@
     //restore功能
     function changeTimeExecRestore(execType){
         $('#'+execType+'-restore-progress').removeClass();
-        $('#'+execType+'-restore-progress').html('开始停服')
-        $('#'+execType+'-restore-progress').css("width","10%");
+        $('#'+execType+'-restore-progress').html('开始停服，预计需要两分钟，期间请勿刷新')
+        $('#'+execType+'-restore-progress').css("width","100%");
         $('#'+execType+'-restore-progress').addClass("progress progress-bar progress-bar-animated bg-info progress-bar-striped");
         $('#'+execType+'-restore-progress').show()
         if(execType=='qa' | execType=='review' | execType=='oft'){
@@ -155,7 +155,7 @@
                                             dataType: "json",
                                             success: function(res){
                                                 $('#'+execType+'-restore-progress').css('width','100%')
-                                                $('#'+execType+'-restore-progress').html('已启动服务器')
+                                                $('#'+execType+'-restore-progress').html('已启动服务器，请两分钟尝试登陆')
                                                 $('#'+execType+'-restore-progress').removeClass("progress-bar-animated bg-info progress-bar-striped");
                                                 $('#'+execType+'-restore-progress').addClass("bg-success");
                                             }
