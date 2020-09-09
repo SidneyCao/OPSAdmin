@@ -131,7 +131,7 @@ def changeTimeExecRestore(request):
             with open('/home/caojiawei/shell/%s_change_time.log' %execType,'r+') as fRead:
                 currentLog = ("".join(fRead.readlines()[0:60]))
             currentTime = os.popen('/home/caojiawei/shell/get_%s_time.sh 2>&1' %execType).read()
-            return JsonResponse({'currentTime':currentTime, 'currentLog':currentLog})
+            return JsonResponse({'currentTime':currentTime, 'currentLog':currentLog, "process":"restore", "status":"success"})
     else:
         raise Http403
 
@@ -141,8 +141,8 @@ def changeTimeExecStart(request):
     if request.is_ajax:
         execType = request.POST.get('execType')
         process = request.POST.get('process')
-        print(execType)
-        print(process)
-        return JsonResponse({"1":"1"})
+        if(process == 'start'):
+            os.popen('/home/langrisser-shell-scripts/Server/%s/ts_startserver.sh 2>&1 > /dev/null' %execType)
+        return JsonResponse({"process":"start", "status":"success"})
     else:
         raise Http403
