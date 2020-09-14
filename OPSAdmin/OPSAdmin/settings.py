@@ -117,6 +117,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+OPER_LOG_FILE = '/home/caojiawei/shell/operationLog.log'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
