@@ -37,6 +37,7 @@ def changeNoticeExec(request):
             with open(uploadFile, 'wb') as newFile:
                 for chunk in fileObj.chunks():
                     newFile.write(chunk)
+            #操作日志打点
             operLogMessage = datetime.datetime.now().strftime(IsoTimeFormat)+' '+currentUser.username+' 上传公告文件 %s 成功。' %fileObj.name
             writeOperationLog(operLogMessage)
             #获取新文件时间
@@ -75,9 +76,12 @@ def changeTimeExec(request):
         date = request.POST.get('date')
         response = os.popen('/home/caojiawei/shell/change_%s_time.sh %s 2>&1' %(execType, date)).read()
         if('invalid' in response or 'Invalid' in response):
+            operLogMessage = datetime.datetime.now().strftime(IsoTimeFormat)+' '+currentUser.username+' 修改%s服务器时间  失败。' %execType
             log=datetime.datetime.now().strftime(IsoTimeFormat)+' Error!'+'\n'+'服务器时间修改失败 '+response
         else:
+            operLogMessage = datetime.datetime.now().strftime(IsoTimeFormat)+' '+currentUser.username+' 修改%s服务器时间  成功。' %execType
             log=datetime.datetime.now().strftime(IsoTimeFormat)+' Successful!'+'\n'+'服务器时间成功修改为 '+response
+        writeOperationLog(operLogMessage)
         with open('/home/caojiawei/shell/%s_change_time.log' %execType,'r+') as fRead:
             conRead = fRead.read()
             fRead.seek(0,0)
@@ -130,8 +134,11 @@ def changeTimeExecRestore(request):
             response = os.popen('/home/caojiawei/shell/change_%s_time.sh %s 2>&1' %(execType, date)).read()
             if('invalid' in response or 'Invalid' in response):
                 log=datetime.datetime.now().strftime(IsoTimeFormat)+' Error!'+'\n'+'服务器时间恢复失败 '+response
+                operLogMessage = datetime.datetime.now().strftime(IsoTimeFormat)+' '+currentUser.username+' 恢复%s服务器时间 失败。' %execType
             else:
                 log=datetime.datetime.now().strftime(IsoTimeFormat)+' Successful!'+'\n'+'服务器时间成功恢复为 '+response
+                operLogMessage = datetime.datetime.now().strftime(IsoTimeFormat)+' '+currentUser.username+' 恢复%s服务器时间 成功。' %execType
+            writeOperationLog(operLogMessage)
             with open('/home/caojiawei/shell/%s_change_time.log' %execType,'r+') as fRead:
                 conRead = fRead.read()
                 fRead.seek(0,0)
