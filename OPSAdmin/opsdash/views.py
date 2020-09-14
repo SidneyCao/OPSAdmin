@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def index(request):
     currentUser = request.user 
-    print(currentUser.id)
+    print(currentUser.username)
     OperationlogFile = '/home/caojiawei/shell/operationLog.log'
     with open(OperationlogFile, 'r+') as fRead:
         currentOperationLog = ("".join(fRead.readlines()[0:60]))
