@@ -17,7 +17,7 @@ def writeOperationLog(operLogMessage):
 @login_required
 def index(request):
     currentUser = request.user 
-    operLogMessage = datetime.datetime.now().strftime(IsoTimeFormat)+' '+currentUser+' 登陆成功。'
+    operLogMessage = datetime.datetime.now().strftime(IsoTimeFormat)+' '+currentUser.username+' 登陆成功。'
     writeOperationLog(operLogMessage)
     with open(operationLogFile, 'r+') as fRead:
         currentOperationLog = ("".join(fRead.readlines()[0:60]))
