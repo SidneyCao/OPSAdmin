@@ -71,6 +71,9 @@ def changeTime(request):
 @login_required
 @csrf_exempt
 def changeTimeExec(request):
+
+    currentUser = request.user
+
     if request.is_ajax:
         execType = request.POST.get('execType')
         date = request.POST.get('date')
@@ -126,6 +129,9 @@ def changeTimeExecDelete(request):
 @login_required
 @csrf_exempt
 def changeTimeExecRestore(request):
+
+    currentUser = request.user
+
     if request.is_ajax:
         execType = request.POST.get('execType')
         process = request.POST.get('process')
