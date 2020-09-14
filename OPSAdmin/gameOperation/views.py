@@ -37,7 +37,7 @@ def changeNoticeExec(request):
             with open(uploadFile, 'wb') as newFile:
                 for chunk in fileObj.chunks():
                     newFile.write(chunk)
-            operLogMessage = datetime.datetime.now().strftime(IsoTimeFormat)+' '+currentUser.username+' 上传公告文件%s成功。' %fileObj.name
+            operLogMessage = datetime.datetime.now().strftime(IsoTimeFormat)+' '+currentUser.username+' 上传公告文件 %s 成功。' %fileObj.name
             writeOperationLog(operLogMessage)
             #获取新文件时间
             lastChangeTime = time.strftime(IsoTimeFormat, time.localtime(os.path.getmtime(monitorFile)))
