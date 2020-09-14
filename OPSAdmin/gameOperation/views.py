@@ -3,10 +3,13 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse
 import os, time, datetime
 from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
+from opsdash.views import writeOperationLog
 # Create your views here.
 
 monitorFile = '/home/langrisser-list/conf/qa_notice.txt'
 IsoTimeFormat='%Y-%m-%d %H:%M:%S'
+operationLogFile = settings.OPER_LOG_FILE
 
 @login_required
 def changeNotice(request):
@@ -20,6 +23,9 @@ def changeNotice(request):
 @login_required
 @csrf_exempt
 def changeNoticeExec(request):
+
+    currentUser = request.user
+
     if request.is_ajax:
         fileObj = request.FILES.get('file')
         #上传文件
@@ -31,6 +37,8 @@ def changeNoticeExec(request):
             with open(uploadFile, 'wb') as newFile:
                 for chunk in fileObj.chunks():
                     newFile.write(chunk)
+            operLogMessage = datetime.datetime.now().strftime(IsoTimeFormat)+' '+currentUser.username+' 上传公告文件%s成功。' %fileObj.name
+            writeOperationLog(operLogMessage)
             #获取新文件时间
             lastChangeTime = time.strftime(IsoTimeFormat, time.localtime(os.path.getmtime(monitorFile)))
             #获取新文件内容
