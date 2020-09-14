@@ -9,5 +9,5 @@ def index(request):
     OperationlogFile = '/home/caojiawei/shell/operationLog.log'
     with open(OperationlogFile, 'r+') as fRead:
         currentOperationLog = ("".join(fRead.readlines()[0:60]))
-    return render(request, 'opsdash/operationLog.html', context={currentOperationLog:currentOperationLog})
+    return render(request, 'opsdash/operationLog.html', context={'currentOperationLog':currentOperationLog})
 
