@@ -6,5 +6,8 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def index(request):
-    return render(request, 'opsdash/operationLog.html')
+    OperationlogFile = '/home/caojiawei/shell/operationLog.log'
+    with open(OperationlogFile, 'r+') as fRead:
+        currentOperationLog = ("".join(fRead.readlines()[0:60]))
+    return render(request, 'opsdash/operationLog.html', context={currentOperationLog:currentOperationLog})
 

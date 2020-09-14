@@ -1,9 +1,12 @@
 {% extends 'opsdash/base.html' %}
-{% block page %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/operationLog.css">
 {% endblock %}
+
 
 {% block content %}
     <h2>操作记录</h2>
-    <p>Coming soon...</p>
+    <div class="line"></div>
+    <div id="current-operation-log" class="pre-scrollable">{{ currentOperationLog }}</div>
 {% endblock %}
 
