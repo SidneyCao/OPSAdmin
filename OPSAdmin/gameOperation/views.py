@@ -79,10 +79,10 @@ def changeTimeExec(request):
         date = request.POST.get('date')
         response = os.popen('/home/caojiawei/shell/change_%s_time.sh %s 2>&1' %(execType, date)).read()
         if('invalid' in response or 'Invalid' in response):
-            operLogMessage = datetime.datetime.now().strftime(IsoTimeFormat)+' '+currentUser.username+' 修改%s服务器时间  失败。' %execType
+            operLogMessage = datetime.datetime.now().strftime(IsoTimeFormat)+' '+currentUser.username+' 修改%s服务器时间 失败。' %execType
             log=datetime.datetime.now().strftime(IsoTimeFormat)+' Error!'+'\n'+'服务器时间修改失败 '+response
         else:
-            operLogMessage = datetime.datetime.now().strftime(IsoTimeFormat)+' '+currentUser.username+' 修改%s服务器时间  成功。' %execType
+            operLogMessage = datetime.datetime.now().strftime(IsoTimeFormat)+' '+currentUser.username+' 修改%s服务器时间 成功。' %execType
             log=datetime.datetime.now().strftime(IsoTimeFormat)+' Successful!'+'\n'+'服务器时间成功修改为 '+response
         writeOperationLog(operLogMessage)
         with open('/home/caojiawei/shell/%s_change_time.log' %execType,'r+') as fRead:
