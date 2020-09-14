@@ -9,7 +9,7 @@ IsoTimeFormat='%Y-%m-%d %H:%M:%S'
 
 # Create your views here.
 def writeOperationLog(operLogMessage):
-    with open(operLogMessage,'r+') as fRead:
+    with open(operationLogFile,'r+') as fRead:
             conRead = fRead.read()
             fRead.seek(0,0)
             fRead.write(operLogMessage+'\n'+'\n'+conRead)
