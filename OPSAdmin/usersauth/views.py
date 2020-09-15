@@ -15,6 +15,7 @@ IsoTimeFormat='%Y-%m-%d %H:%M:%S'
 
 def user_login(request,authentication_form=AuthenticationForm):
     err_message = ''
+    nextUrl = request.GET.get('next')
     if request.method == 'POST':
         #requst.POST.get 获取的是 <input name="username">
         username = request.POST.get('username')
@@ -25,7 +26,7 @@ def user_login(request,authentication_form=AuthenticationForm):
             currentUser = request.user
             operLogMessage = datetime.datetime.now().strftime(IsoTimeFormat)+' '+currentUser.username+' 登陆 成功。'
             writeOperationLog(operLogMessage)
-            return HttpResponseRedirect(reverse(request.GET.get('next')))
+            return HttpResponseRedirect(reverse(nextUrl))
         else:
             err_message = '<div class="alert alert-danger"><p class="mb-0"><strong>ERROR!</strong></p>username or password not match!</strong></div>'
             return render(request, 'usersauth/login.html',{'err_message': err_message})
