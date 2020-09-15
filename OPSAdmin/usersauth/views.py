@@ -27,7 +27,7 @@ def user_login(request,authentication_form=AuthenticationForm):
             currentUser = request.user
             operLogMessage = datetime.datetime.now().strftime(IsoTimeFormat)+' '+currentUser.username+' 登陆 成功。'
             writeOperationLog(operLogMessage)
-            if next_url:
+            if nextUrl:
                 cache.delete('next')
                 return HttpResponseRedirect(reverse(nextUrl))
         else:
