@@ -14,10 +14,12 @@ IsoTimeFormat='%Y-%m-%d %H:%M:%S'
 
 
 def user_login(request,authentication_form=AuthenticationForm):
+    if request.method == 'GET':
+        cache.set('next', request.GET.get('next', None))
     err_message = ''
     if request.method == 'POST':
         #requst.POST.get 获取的是 <input name="username">
-        nextUrl = request.POST.get('next')
+        nextUrl = next_url = cache.get('next')
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)        
@@ -26,7 +28,9 @@ def user_login(request,authentication_form=AuthenticationForm):
             currentUser = request.user
             operLogMessage = datetime.datetime.now().strftime(IsoTimeFormat)+' '+currentUser.username+' 登陆 成功。'
             writeOperationLog(operLogMessage)
-            return HttpResponseRedirect(nextUrl)
+            if next_url:
+                cache.delete('next')
+                return HttpResponseRedirect(reverse(nextUrl))
         else:
             err_message = '<div class="alert alert-danger"><p class="mb-0"><strong>ERROR!</strong></p>username or password not match!</strong></div>'
             return render(request, 'usersauth/login.html',{'err_message': err_message})
