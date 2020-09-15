@@ -5,9 +5,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.core import cache
-
+from django.conf import settings
+from opsdash.views import writeOperationLog
 # Create your views here.
 
+writeOperationLog = settings.OPER_LOG_FILE
 
 def user_login(request,authentication_form=AuthenticationForm):
     err_message = ''
@@ -18,6 +20,9 @@ def user_login(request,authentication_form=AuthenticationForm):
         user = authenticate(username=username, password=password)        
         if user:
             login(request, user)
+            currentUser = request.user
+            operLogMessage = datetime.datetime.now().strftime(IsoTimeFormat)+' '+currentUser.username+' 登陆 成功。'
+            writeOperationLog(operLogMessage)
             return HttpResponseRedirect(reverse('opsdash:index'))
         else:
             err_message = '<div class="alert alert-danger"><p class="mb-0"><strong>ERROR!</strong></p>username or password not match!</strong></div>'

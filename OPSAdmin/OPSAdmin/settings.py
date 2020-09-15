@@ -119,6 +119,8 @@ USE_TZ = True
 
 OPER_LOG_FILE = '/home/caojiawei/shell/operationLog.log'
 
+SESSION_COOKIE_AGE = 172800
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
