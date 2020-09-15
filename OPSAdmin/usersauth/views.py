@@ -11,6 +11,8 @@ import datetime
 # Create your views here.
 
 writeOperationLog = settings.OPER_LOG_FILE
+IsoTimeFormat='%Y-%m-%d %H:%M:%S'
+
 
 def user_login(request,authentication_form=AuthenticationForm):
     err_message = ''
