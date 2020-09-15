@@ -10,7 +10,6 @@ from opsdash.views import writeOperationLog
 import datetime
 # Create your views here.
 
-writeOperationLog = settings.OPER_LOG_FILE
 IsoTimeFormat='%Y-%m-%d %H:%M:%S'
 
 
