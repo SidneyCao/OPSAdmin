@@ -15,7 +15,7 @@ IsoTimeFormat='%Y-%m-%d %H:%M:%S'
 
 def user_login(request,authentication_form=AuthenticationForm):
     err_message = ''
-    nextUrl = request.GET.get('next')
+    nextUrl = request.GET.get(next, '')
     if request.method == 'POST':
         #requst.POST.get 获取的是 <input name="username">
         username = request.POST.get('username')
