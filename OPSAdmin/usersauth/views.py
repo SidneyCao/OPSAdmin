@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-from django.core import cache
+from django.core.cache import cache
 from django.conf import settings
 from opsdash.views import writeOperationLog
 import datetime
@@ -19,7 +19,6 @@ def user_login(request,authentication_form=AuthenticationForm):
     err_message = ''
     if request.method == 'POST':
         #requst.POST.get 获取的是 <input name="username">
-        nextUrl = next_url = cache.get('next')
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)        
