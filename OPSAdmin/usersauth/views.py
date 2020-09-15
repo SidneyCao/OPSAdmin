@@ -21,6 +21,7 @@ def user_login(request,authentication_form=AuthenticationForm):
         #requst.POST.get 获取的是 <input name="username">
         username = request.POST.get('username')
         password = request.POST.get('password')
+        nextUrl = cache.get('next')
         user = authenticate(username=username, password=password)        
         if user:
             login(request, user)
