@@ -25,7 +25,7 @@ def user_login(request,authentication_form=AuthenticationForm):
             currentUser = request.user
             operLogMessage = datetime.datetime.now().strftime(IsoTimeFormat)+' '+currentUser.username+' 登陆 成功。'
             writeOperationLog(operLogMessage)
-            return HttpResponseRedirect(reverse('opsdash:index'))
+            return HttpResponseRedirect(reverse(self.request.GET.get('next')))
         else:
             err_message = '<div class="alert alert-danger"><p class="mb-0"><strong>ERROR!</strong></p>username or password not match!</strong></div>'
             return render(request, 'usersauth/login.html',{'err_message': err_message})
